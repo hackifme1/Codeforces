@@ -1,0 +1,83 @@
+// By Chandramani Kumar
+// Keep moving and must be simple bro!!!!!
+// Espérons le meilleur mais préparez-vous au pire 😎
+
+
+Cpp code :
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+
+ll cnt_digit(ll n)
+{
+	ll count=0;
+	while(n)
+	{
+		n=n/10;
+		count++;
+	}
+	return count;
+}
+
+int main() {
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll x,i,j,k;
+		cin>>x;
+		
+		if(x>=46)
+		cout<<-1<<endl;
+		else
+		{
+			ll cnt=cnt_digit(x);
+			if(cnt==1)
+			cout<<x<<endl;
+			else if(cnt==2&&x<=17)
+			{
+				ll diff=17-x;
+				cout<<(89-10*diff)<<endl;
+			}
+			else if(cnt==2&&x<=24)
+			{
+					ll diff=24-x;
+				cout<<(789-100*diff)<<endl;
+			}
+			else if(cnt==2&&x<=30)
+			{
+					ll diff=30-x;
+				cout<<(6789-1000*diff)<<endl;
+			}
+			else if(cnt==2&&x<=35)
+			{
+					ll diff=35-x;
+				cout<<(56789-10000*diff)<<endl;
+			}
+			else if(cnt==2&&x<=39)
+			{
+					ll diff=39-x;
+				cout<<(456789-100000*diff)<<endl;
+			}
+			else if(cnt==2&&x<=42)
+			{
+					ll diff=42-x;
+				cout<<(3456789-1000000*diff)<<endl;
+			}
+			else if(cnt==2&&x<=44)
+			{
+					ll diff=44-x;
+				cout<<(23456789-10000000*diff)<<endl;
+			}
+			else
+			{
+					
+				cout<<"123456789"<<endl;
+			}
+		}
+		
+	}
+	return 0;
+}
