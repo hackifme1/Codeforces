@@ -1,0 +1,79 @@
+// By Chandramani Kumar
+// Keep moving and must be simple bro!!!!!
+// Espérons le meilleur mais préparez-vous au pire 😎
+
+
+Cpp code :
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+#define mod 1000000007
+#define len 200001
+#define col 101
+
+ll a[len][col];
+
+int main() {
+	ll t;
+	cin>>t;
+	
+	
+	for(ll i=0;i<len;i++)
+	{
+		for(ll j=0;j<col;j++)
+		a[i][j]=0;
+	}
+	ll line,r;
+	
+	for(line=0;line<len;line++)
+	{
+		for(r=0;r<=col;r++)
+		{
+			if( r==0 || line==r )
+			a[line][r]=1;
+			else
+			a[line][r]=((a[line-1][r-1])%mod+(a[line-1][r])%mod)%mod;
+		}
+	}
+	
+	while(t--)
+	{
+		ll n,m,k,i,j,x;
+		cin>>n>>m>>k;
+	    vector<ll> v;
+		
+		for(i=0;i<n;i++)
+		{
+			cin>>x;
+			v.push_back(x);
+		}
+		
+// 		for(i=0;i<n;i++)
+// 		cout<<v[i]<<" ";
+
+		sort(v.begin(),v.end());
+// 			for(i=0;i<n;i++)
+//      		cout<<v[i]<<" ";
+		ll cnt=0;
+		for(i=0;i<=(n-m);i++)
+		{
+			ll diff=0;
+			//ll lb= lower_bound(v.begin(),v.end(),v[i])-v.begin();
+			ll ub= upper_bound(v.begin(),v.end(),v[i]+k)-v.begin();
+			if(ub == n)
+			diff = n-i;
+		    else
+		    diff = ub-i;
+		//	cout<<diff<<endl;
+		diff--;
+			if(diff>=(m-1))
+			{
+				cnt=(cnt%mod+a[diff][m-1]%mod)%mod;
+			}
+		}
+		cout<<cnt<<endl;
+	}
+	return 0;
+}
