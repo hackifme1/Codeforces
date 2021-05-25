@@ -1,0 +1,52 @@
+// By Chandramani Kumar
+// Keep moving and must be simple bro!!!!!
+// Espérons le meilleur mais préparez-vous au pire 😎
+
+
+Cpp code :
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll n,i,j,x;
+		cin>>n;
+	    vector<ll> v;
+		
+		for(i=0;i<n;i++)
+		{
+			cin>>x;
+			v.push_back(x);
+		}
+		
+// 		for(i=0;i<n;i++)
+// 		cout<<v[i]<<" ";
+
+		sort(v.begin(),v.end());
+// 			for(i=0;i<n;i++)
+//      		cout<<v[i]<<" ";
+		ll cnt=0;
+		for(i=0;i<=(n-3);i++)
+		{
+			ll diff=0;
+			//ll lb= lower_bound(v.begin(),v.end(),v[i])-v.begin();
+			ll ub= upper_bound(v.begin(),v.end(),v[i]+2)-v.begin();
+			if(ub == n)
+			diff = n-i;
+		    else
+		    diff = ub-i;
+		//	cout<<diff<<endl;
+		diff--;
+			if(diff>=2)
+			cnt=cnt + ((diff)*(diff-1))/2;
+			
+		}
+		cout<<cnt<<endl;
+	}
+	return 0;
+}
